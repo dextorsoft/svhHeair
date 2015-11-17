@@ -1,0 +1,28 @@
+//
+// Prefix header for all source files of the 'cwnu' target in the 'cwnu' project
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_5_0
+#warning "This project uses features only available in iOS SDK 5.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#endif
+
+#ifdef DEBUG
+#define NSLog( s, ... ) NSLog( @"<%p %@:(%d)> %@", self, [[NSString stringWithUTF8String:__FILE__] lastPathComponent], __LINE__, [NSString stringWithFormat:(s), ##__VA_ARGS__] )
+#else
+#define NSLog( s, ... )
+#endif
+
+
+#define KN_SERVER_LANG -2147482590 //window xx 특수문자 이변환을 이용할것
+#define KN_PHONE_LANG -2147481280 //euc_kr 이변환은 한글이 깨질때도 있음
+#define KN_UTF8 NSUTF8StringEncoding //utf8 encoding
+#define KN_HOST_NAME "svhb.kmsoft.kr"
+#define KN_Department_NAME @"svhHairSalon"        //group_final_check_name 이면 이걸로 바꾼다....20150710
+#define KN_SQLITE @"svhHair.sqlite"
