@@ -19,6 +19,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.title = @"Version";
     // Do any additional setup after loading the view.
     
     NSDictionary *infoDictionary = [[NSBundle mainBundle] infoDictionary];

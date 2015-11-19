@@ -31,7 +31,16 @@
 }
 
 -(void)viewDidAppear:(BOOL)animated{
-    [self performSegueWithIdentifier:@"AutoSignIn" sender:self];    //작동 확인 sqlite 에서 로그인 여부 확인 하고 넘기는 method 로 활용 20151104
+    //////////
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];      //환경변수 open
+    
+    NSString *userCheck = [prefs objectForKey:@"userCheck"];            //user 가 로그인 했는 지 체크하는 환경변수
+    
+    [prefs synchronize];
+    
+    //////////
+    //[self performSegueWithIdentifier:@"AutoSignIn" sender:self];    //작동 확인 sqlite 에서 로그인 여부 확인 하고 넘기는 method 로 활용 20151104
 }
 
 -(void)viewWillAppear:(BOOL)animated{
@@ -112,8 +121,41 @@
     UIAlertAction *otherAction = [UIAlertAction actionWithTitle:otherButtonTitle style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         userId = alertController.textFields.firstObject.text;    //Id textField 텍스트 가져오기
         userPass = alertController.textFields.lastObject.text;  //Pass passField 텍스트 가져오기
+        
+        NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+        NSString *userToken = [prefs objectForKey:@"m_Device"];
+        [prefs synchronize];
         NSLog(@"Submit Action!! == %@ ,,, %@",userId,userPass);
-        /////////if 문 준비 하기
+        /////////if 문 web 에서 id, pw 유무 확인 및 체크
+        
+        NSString *login = [NSString stringWithFormat:@"http://%s/m_login_check.php?m_Id=%@&m_st_pass=%@&m_device=%@", KN_HOST_NAME, userId, userPass, userToken];
+        
+        NSString *loginCheck = [GetHtmlParsing GetHTMLString:login encoding:KN_SERVER_LANG];  //아이디가 없을 경우 = nosearch, 비밀번호가 없을 경우 = nopass, 이외 = error
+        
+        if(([loginCheck isEqualToString:@"error"] || [loginCheck isEqualToString:@"null"] || [loginCheck isEqualToString:@""])){
+            
+            UIAlertController *loginWarn = [UIAlertController alertControllerWithTitle:@"접속이 올바르지 않습니다. 확인 후 다시 시도 하세요"
+                                                                                    message:nil
+                                                                             preferredStyle:UIAlertControllerStyleAlert];
+            [loginWarn addAction:({
+                UIAlertAction *action = [UIAlertAction actionWithTitle:@"check"
+                                                                 style:UIAlertActionStyleDefault
+                                                               handler:^(UIAlertAction *action) {
+                                                                   //action nil;
+                                                               }];
+                action;
+            })];
+            
+            [self presentViewController:loginWarn animated:YES completion:nil];
+        }else if([[loginCheck stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]] isEqualToString:@"nosearch"]){
+            
+            UIAlertController *warnAlert = [UIAlertController alertControllerWithTitle:@"존재하지 않는 아이디 입니다."
+                                                                               message:nil
+                                                                        preferredStyle:UIAlertControllerStyleActionSheet];
+            
+            
+        }
+        
         [self performSegueWithIdentifier:@"SignIn" sender:nil];
     }];
     

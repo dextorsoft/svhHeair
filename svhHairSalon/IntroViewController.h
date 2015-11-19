@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ForToolClass.h"
 #import "StatusHideViewController.h"
+#import "SQLiteConnect.h"
 
 @interface IntroViewController : StatusHideViewController {
 
