@@ -40,7 +40,7 @@
     [prefs synchronize];
     
     //////////
-    //[self performSegueWithIdentifier:@"AutoSignIn" sender:self];    //작동 확인 sqlite 에서 로그인 여부 확인 하고 넘기는 method 로 활용 20151104
+    [self performSegueWithIdentifier:@"AutoSignIn" sender:self];    //작동 확인 sqlite 에서 로그인 여부 확인 하고 넘기는 method 로 활용 20151104
 }
 
 -(void)viewWillAppear:(BOOL)animated{
