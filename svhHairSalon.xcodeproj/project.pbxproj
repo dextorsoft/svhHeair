@@ -104,6 +104,9 @@
 		A5ED65B31BE8A2EA00BFC2F6 /* svhHair_BU.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A5ED65B01BE8A2EA00BFC2F6 /* svhHair_BU.sqlite */; };
 		A5F2F33B1BD87DC100613DBD /* StackTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2F33A1BD87DC100613DBD /* StackTableView.m */; };
 		A5F2F3521BD87FBD00613DBD /* HairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2F3511BD87FBD00613DBD /* HairViewController.m */; };
+		DCDEF2121BFC6A1000937A96 /* ScheduleDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDEF2101BFC6A1000937A96 /* ScheduleDetailTableViewCell.m */; };
+		DCDEF2131BFC6A1000937A96 /* ScheduleDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCDEF2111BFC6A1000937A96 /* ScheduleDetailTableViewCell.xib */; };
+		DCDEF2161BFC6A4300937A96 /* ScheduleDetailTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDEF2151BFC6A4300937A96 /* ScheduleDetailTableViewDataSource.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -260,6 +263,11 @@
 		A5F2F33A1BD87DC100613DBD /* StackTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackTableView.m; sourceTree = "<group>"; };
 		A5F2F3501BD87FBD00613DBD /* HairViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HairViewController.h; sourceTree = "<group>"; };
 		A5F2F3511BD87FBD00613DBD /* HairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HairViewController.m; sourceTree = "<group>"; };
+		DCDEF20F1BFC6A1000937A96 /* ScheduleDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailTableViewCell.h; sourceTree = "<group>"; };
+		DCDEF2101BFC6A1000937A96 /* ScheduleDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailTableViewCell.m; sourceTree = "<group>"; };
+		DCDEF2111BFC6A1000937A96 /* ScheduleDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleDetailTableViewCell.xib; sourceTree = "<group>"; };
+		DCDEF2141BFC6A4300937A96 /* ScheduleDetailTableViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailTableViewDataSource.h; sourceTree = "<group>"; };
+		DCDEF2151BFC6A4300937A96 /* ScheduleDetailTableViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailTableViewDataSource.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -590,6 +598,11 @@
 				A5A70D291BD4D9DF00877707 /* CalendarView.m */,
 				A5A70D2B1BD4DE2C00877707 /* ScheduleDetailViewController.h */,
 				A5A70D2C1BD4DE2C00877707 /* ScheduleDetailViewController.m */,
+				DCDEF2141BFC6A4300937A96 /* ScheduleDetailTableViewDataSource.h */,
+				DCDEF2151BFC6A4300937A96 /* ScheduleDetailTableViewDataSource.m */,
+				DCDEF20F1BFC6A1000937A96 /* ScheduleDetailTableViewCell.h */,
+				DCDEF2101BFC6A1000937A96 /* ScheduleDetailTableViewCell.m */,
+				DCDEF2111BFC6A1000937A96 /* ScheduleDetailTableViewCell.xib */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";
@@ -750,6 +763,7 @@
 				A5A70D231BD4BE4400877707 /* Default@2x.png in Resources */,
 				43E1F4D61BFB1AEE004617A6 /* icon_heart.png in Resources */,
 				A5C175F41BBCCF2000DF234E /* launchScreen.png in Resources */,
+				DCDEF2131BFC6A1000937A96 /* ScheduleDetailTableViewCell.xib in Resources */,
 				43E1F4B21BFAB90B004617A6 /* set_sms.png in Resources */,
 				43E1F4AD1BFAB90B004617A6 /* set_id.png in Resources */,
 				43E1F4AB1BFAB90B004617A6 /* set_guest.png in Resources */,
@@ -801,6 +815,7 @@
 				A58CA3811BCBA3F2009BC054 /* CETurnAnimationController.m in Sources */,
 				A5C176131BBD17AA00DF234E /* JoinViewController.m in Sources */,
 				A5F2F3521BD87FBD00613DBD /* HairViewController.m in Sources */,
+				DCDEF2121BFC6A1000937A96 /* ScheduleDetailTableViewCell.m in Sources */,
 				A5C175BC1BBCC1FC00DF234E /* ViewController.m in Sources */,
 				A5A70D2A1BD4D9DF00877707 /* CalendarView.m in Sources */,
 				A5F2F33B1BD87DC100613DBD /* StackTableView.m in Sources */,
@@ -822,6 +837,7 @@
 				A58CA3871BCBA410009BC054 /* CEBaseInteractionController.m in Sources */,
 				43E1F4C31BFB0576004617A6 /* ProfileViewController.m in Sources */,
 				A5EB306A1BCCA64A00FFC567 /* ForToolClass.m in Sources */,
+				DCDEF2161BFC6A4300937A96 /* ScheduleDetailTableViewDataSource.m in Sources */,
 				A5EB30671BCC908000FFC567 /* InfoViewController.m in Sources */,
 				A5C1760B1BBCFEF600DF234E /* IntroViewController.m in Sources */,
 				A5C175B91BBCC1FC00DF234E /* AppDelegate.m in Sources */,
