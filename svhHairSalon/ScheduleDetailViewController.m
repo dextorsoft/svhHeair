@@ -20,11 +20,21 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
+    _forTooClass = [[ForToolClass alloc] init];
+    [self bindDesigner];
+    
     ////////////////sqlite setting
     
-
+    
     
     ////////////////
+    
+//    UIImage *navBack = [UIImage imageNamed:@"nav_back.png"];
+    
+    
+//    [self.navigationController.navigationBar setBackgroundImage:navBack forBarMetrics:UIBarMetricsDefault];
+    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+//
     
     [self TitleSubSet];
     
@@ -47,7 +57,7 @@
     NSRange rangeD = {8, 2};
     
     dateString = [NSString stringWithFormat:@"%@월%@일", [dateString substringWithRange:rangeM],[dateString substringWithRange:rangeD]];
-    
+    self.navigationItem.title = dateString;;
     self.title = dateString;
     
     [prefs synchronize];
@@ -61,19 +71,22 @@
     ////////////
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
-
 -(BOOL)prefersStatusBarHidden{
     return YES;
 }
 
+#pragma 디자이너 바인딩
+- (void) bindDesigner {
+    
+    NSString *url = [NSString stringWithFormat:@"http://%s/m_list.php?m_Mode=4",KN_HOST_NAME];
+    NSString *tableData = [_forTooClass GetHTMLString:url encoding:KN_SERVER_LANG];
+    tableData = [tableData stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    NSArray *tableArray = [tableData componentsSeparatedByString:@"<br>"];
+    
+    NSLog(@"로그");
+//    if (tableArray.count > 0) {
+//        
+//    }
+}
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ForToolClass.h"
 
 @interface ScheduleDetailViewController : UIViewController{
     
@@ -14,6 +15,8 @@
 
 @property NSString *testString;
 
-@property (weak, nonatomic) IBOutlet UILabel *testLabel;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) ForToolClass *forTooClass;
 
 @end
