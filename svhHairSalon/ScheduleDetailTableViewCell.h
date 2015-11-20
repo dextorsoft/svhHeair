@@ -10,4 +10,12 @@
 
 @interface ScheduleDetailTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UIImageView *designerImage;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbl_designerName;
+
+@property (weak, nonatomic) IBOutlet UILabel *lbl_reserveYN;
+
+@property (weak, nonatomic) IBOutlet UIView *roundView;
+
 @end

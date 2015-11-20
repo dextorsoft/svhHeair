@@ -7,7 +7,26 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
+
+@protocol ScheduleDetailTableViewDataSourceDelegate;
 
 @interface ScheduleDetailTableViewDataSource : NSObject<UITableViewDataSource, UITableViewDelegate>
+
+@property (strong, nonatomic) NSArray *designList;
+
+@property (strong, nonatomic) NSArray *designDate;
+
+@property (strong, nonatomic) NSMutableDictionary *designerCachedImages;
+
+@property (strong, nonatomic) id<ScheduleDetailTableViewDataSourceDelegate> delegate;
+
+@end
+
+@protocol ScheduleDetailTableViewDataSourceDelegate <NSObject>
+
+@required
+
+- (void) DesignerListSelectedIndex : (NSString *) designerCode;
 
 @end

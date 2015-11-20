@@ -8,14 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "ForToolClass.h"
+#import "ScheduleDetailTableViewDataSource.h"
+#import "DesignerScheduleTimeViewController.h"
 
-@interface ScheduleDetailViewController : UIViewController{
+@interface ScheduleDetailViewController : UIViewController<ScheduleDetailTableViewDataSourceDelegate> {
     
 }
 
 @property NSString *testString;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (strong, nonatomic) ScheduleDetailTableViewDataSource *scheduleDetailTableViewDataSource;
 
 @property (strong, nonatomic) ForToolClass *forTooClass;
 
