@@ -104,6 +104,12 @@
 		A5ED65B31BE8A2EA00BFC2F6 /* svhHair_BU.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A5ED65B01BE8A2EA00BFC2F6 /* svhHair_BU.sqlite */; };
 		A5F2F33B1BD87DC100613DBD /* StackTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2F33A1BD87DC100613DBD /* StackTableView.m */; };
 		A5F2F3521BD87FBD00613DBD /* HairViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A5F2F3511BD87FBD00613DBD /* HairViewController.m */; };
+		DC31B1011BFF01D7003CDA4D /* DesignerCutListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC31B1001BFF01D7003CDA4D /* DesignerCutListViewController.m */; };
+		DC31B1041BFF066C003CDA4D /* DesignerCutListViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DC31B1031BFF066C003CDA4D /* DesignerCutListViewDataSource.m */; };
+		DC36C71B1BFDCC5300E7558C /* DesignerScheduleTimeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = DC36C71A1BFDCC5300E7558C /* DesignerScheduleTimeViewController.m */; };
+		DC36C7241BFDDD8800E7558C /* DesignerScheduleTimeViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DC36C7221BFDDD8800E7558C /* DesignerScheduleTimeViewCell.m */; };
+		DC36C7251BFDDD8800E7558C /* DesignerScheduleTimeViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DC36C7231BFDDD8800E7558C /* DesignerScheduleTimeViewCell.xib */; };
+		DC36C7281BFDDEC500E7558C /* DesignerScheduleTimeViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DC36C7271BFDDEC500E7558C /* DesignerScheduleTimeViewDataSource.m */; };
 		DCDEF2121BFC6A1000937A96 /* ScheduleDetailTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDEF2101BFC6A1000937A96 /* ScheduleDetailTableViewCell.m */; };
 		DCDEF2131BFC6A1000937A96 /* ScheduleDetailTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DCDEF2111BFC6A1000937A96 /* ScheduleDetailTableViewCell.xib */; };
 		DCDEF2161BFC6A4300937A96 /* ScheduleDetailTableViewDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = DCDEF2151BFC6A4300937A96 /* ScheduleDetailTableViewDataSource.m */; };
@@ -263,6 +269,17 @@
 		A5F2F33A1BD87DC100613DBD /* StackTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StackTableView.m; sourceTree = "<group>"; };
 		A5F2F3501BD87FBD00613DBD /* HairViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HairViewController.h; sourceTree = "<group>"; };
 		A5F2F3511BD87FBD00613DBD /* HairViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HairViewController.m; sourceTree = "<group>"; };
+		DC31B0FF1BFF01D7003CDA4D /* DesignerCutListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignerCutListViewController.h; sourceTree = "<group>"; };
+		DC31B1001BFF01D7003CDA4D /* DesignerCutListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignerCutListViewController.m; sourceTree = "<group>"; };
+		DC31B1021BFF066C003CDA4D /* DesignerCutListViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignerCutListViewDataSource.h; sourceTree = "<group>"; };
+		DC31B1031BFF066C003CDA4D /* DesignerCutListViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignerCutListViewDataSource.m; sourceTree = "<group>"; };
+		DC36C7191BFDCC5300E7558C /* DesignerScheduleTimeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignerScheduleTimeViewController.h; sourceTree = "<group>"; };
+		DC36C71A1BFDCC5300E7558C /* DesignerScheduleTimeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignerScheduleTimeViewController.m; sourceTree = "<group>"; };
+		DC36C7211BFDDD8800E7558C /* DesignerScheduleTimeViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignerScheduleTimeViewCell.h; sourceTree = "<group>"; };
+		DC36C7221BFDDD8800E7558C /* DesignerScheduleTimeViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignerScheduleTimeViewCell.m; sourceTree = "<group>"; };
+		DC36C7231BFDDD8800E7558C /* DesignerScheduleTimeViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DesignerScheduleTimeViewCell.xib; sourceTree = "<group>"; };
+		DC36C7261BFDDEC500E7558C /* DesignerScheduleTimeViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DesignerScheduleTimeViewDataSource.h; sourceTree = "<group>"; };
+		DC36C7271BFDDEC500E7558C /* DesignerScheduleTimeViewDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DesignerScheduleTimeViewDataSource.m; sourceTree = "<group>"; };
 		DCDEF20F1BFC6A1000937A96 /* ScheduleDetailTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScheduleDetailTableViewCell.h; sourceTree = "<group>"; };
 		DCDEF2101BFC6A1000937A96 /* ScheduleDetailTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScheduleDetailTableViewCell.m; sourceTree = "<group>"; };
 		DCDEF2111BFC6A1000937A96 /* ScheduleDetailTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ScheduleDetailTableViewCell.xib; sourceTree = "<group>"; };
@@ -603,6 +620,17 @@
 				DCDEF20F1BFC6A1000937A96 /* ScheduleDetailTableViewCell.h */,
 				DCDEF2101BFC6A1000937A96 /* ScheduleDetailTableViewCell.m */,
 				DCDEF2111BFC6A1000937A96 /* ScheduleDetailTableViewCell.xib */,
+				DC36C7191BFDCC5300E7558C /* DesignerScheduleTimeViewController.h */,
+				DC36C71A1BFDCC5300E7558C /* DesignerScheduleTimeViewController.m */,
+				DC36C7261BFDDEC500E7558C /* DesignerScheduleTimeViewDataSource.h */,
+				DC36C7271BFDDEC500E7558C /* DesignerScheduleTimeViewDataSource.m */,
+				DC36C7211BFDDD8800E7558C /* DesignerScheduleTimeViewCell.h */,
+				DC36C7221BFDDD8800E7558C /* DesignerScheduleTimeViewCell.m */,
+				DC36C7231BFDDD8800E7558C /* DesignerScheduleTimeViewCell.xib */,
+				DC31B0FF1BFF01D7003CDA4D /* DesignerCutListViewController.h */,
+				DC31B1001BFF01D7003CDA4D /* DesignerCutListViewController.m */,
+				DC31B1021BFF066C003CDA4D /* DesignerCutListViewDataSource.h */,
+				DC31B1031BFF066C003CDA4D /* DesignerCutListViewDataSource.m */,
 			);
 			name = Schedule;
 			sourceTree = "<group>";
@@ -755,6 +783,7 @@
 				A58CA34D1BCB7236009BC054 /* tabCommunity.png in Resources */,
 				A55F5B011BBE4B300005EEBE /* btnBack.png in Resources */,
 				43E1F4B41BFAB90B004617A6 /* set_ver.png in Resources */,
+				DC36C7251BFDDD8800E7558C /* DesignerScheduleTimeViewCell.xib in Resources */,
 				A520908D1BC5F1D900ADB005 /* svhHair_업데이트 기록.txt in Resources */,
 				43EC84331BF9D1F100F85B67 /* set_user.png in Resources */,
 				43E1F4D81BFB1AEE004617A6 /* icon_main.png in Resources */,
@@ -814,8 +843,12 @@
 			files = (
 				A58CA3811BCBA3F2009BC054 /* CETurnAnimationController.m in Sources */,
 				A5C176131BBD17AA00DF234E /* JoinViewController.m in Sources */,
+				DC36C7241BFDDD8800E7558C /* DesignerScheduleTimeViewCell.m in Sources */,
 				A5F2F3521BD87FBD00613DBD /* HairViewController.m in Sources */,
+				DC31B1011BFF01D7003CDA4D /* DesignerCutListViewController.m in Sources */,
+				DC36C71B1BFDCC5300E7558C /* DesignerScheduleTimeViewController.m in Sources */,
 				DCDEF2121BFC6A1000937A96 /* ScheduleDetailTableViewCell.m in Sources */,
+				DC36C7281BFDDEC500E7558C /* DesignerScheduleTimeViewDataSource.m in Sources */,
 				A5C175BC1BBCC1FC00DF234E /* ViewController.m in Sources */,
 				A5A70D2A1BD4D9DF00877707 /* CalendarView.m in Sources */,
 				A5F2F33B1BD87DC100613DBD /* StackTableView.m in Sources */,
@@ -849,6 +882,7 @@
 				A58CA37F1BCBA3F2009BC054 /* CEFoldAnimationController.m in Sources */,
 				43E1F4BD1BFACDF9004617A6 /* PriceViewController.m in Sources */,
 				A58CA3861BCBA410009BC054 /* CEHorizontalSwipeInteractionController.m in Sources */,
+				DC31B1041BFF066C003CDA4D /* DesignerCutListViewDataSource.m in Sources */,
 				A54884CD1BCE116B003B96CA /* EventTableViewCell.m in Sources */,
 				A58CA3581BCB7713009BC054 /* ScheduleViewController.m in Sources */,
 				A54884C41BCDDF36003B96CA /* EventTableViewController.m in Sources */,
@@ -924,7 +958,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: jinsu lee (E6DZT5WPDE)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: kmkby@naver.com (SST5FA4DKP)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -969,6 +1004,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: jinsu lee (E6DZT5WPDE)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";

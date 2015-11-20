@@ -33,9 +33,8 @@
     [super viewDidLoad];
 //    [self.view setBackgroundColor:[UIColor blackColor]];
     
-//    UIImage *navBack = [UIImage imageNamed:@"nav_back.png"];
-//    [self.navigationController.navigationBar setBackgroundImage:navBack forBarMetrics:UIBarMetricsDefault];
-//    [self.navigationController.navigationBar setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor whiteColor]}];
+//    self.navigationController.navigationBar.translucent = NO;
+    self.tabBarController.tabBar.translucent = NO;
 //    
     forToolClass = [[ForToolClass alloc] init];
     scheduleDetail = [[ScheduleDetailViewController alloc] init];

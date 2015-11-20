@@ -18,8 +18,6 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     
-    
-    
     NSDictionary *aps =[launchOptions objectForKey:UIApplicationLaunchOptionsRemoteNotificationKey];
     
     if (aps != nil) {

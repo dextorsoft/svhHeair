@@ -1,30 +1,24 @@
 //
-//  ScheduleDetailTableViewCell.m
+//  DesignerScheduleTimeViewCell.m
 //  svhHairSalon
 //
-//  Created by OGGU on 2015. 11. 18..
+//  Created by OGGU on 2015. 11. 19..
 //  Copyright © 2015년 kr.co.knsoft.svhHair. All rights reserved.
 //
 
-#import "ScheduleDetailTableViewCell.h"
+#import "DesignerScheduleTimeViewCell.h"
 
-@implementation ScheduleDetailTableViewCell
+@implementation DesignerScheduleTimeViewCell
 
 - (void)awakeFromNib {
     // Initialization code
-    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
 
     // Configure the view for the selected state
-}
-
-- (BOOL)autoresizesSubviews {
     
-    [_roundView.layer setCornerRadius:10];
-    return YES;
 }
 
 @end
