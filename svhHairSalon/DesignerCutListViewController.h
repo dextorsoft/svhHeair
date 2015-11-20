@@ -10,12 +10,22 @@
 #import "ForToolClass.h"
 #import "DesignerCutListViewDataSource.h"
 
-@interface DesignerCutListViewController : UIViewController
+
+
+@interface DesignerCutListViewController : UIViewController<DesignerCutListViewDataSourceDelegate, UIAlertViewDelegate>
 
 @property (strong, nonatomic) ForToolClass *forTooClass;
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+- (IBAction)ac_btn_closeModal:(id)sender;
+
 @property (strong, nonatomic) DesignerCutListViewDataSource *designerCutListViewDataSource;
+
+@property (strong, nonatomic) NSString *designerCode;
+
+@property (strong, nonatomic) NSString *reserveDate;
+
+@property (strong, nonatomic) NSString *reserveTime;
 
 @end

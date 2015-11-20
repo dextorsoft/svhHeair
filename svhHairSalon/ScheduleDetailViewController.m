@@ -119,7 +119,6 @@
     
     NSString *dateString = [[prefs stringForKey:@"SelectDateString"] substringToIndex:[[prefs stringForKey:@"SelectDateString"] length] - 3];
     
-    //NSRange rangeY = {0, 4};
     NSRange rangeY = {0, 4};
     NSRange rangeM = {5, 2};
     NSRange rangeD = {8, 2};
@@ -160,9 +159,21 @@
 }
 
 #pragma 선택된 디자이너
-- (void) DesignerListSelectedIndex:(NSString *)designerCode{
+- (void) DesignerListSelectedIndex:(NSString *) designerCode{
     
-    [self performSegueWithIdentifier:@"designerSegue" sender:designerCode];
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    NSString *dateString = [[prefs stringForKey:@"SelectDateString"] substringToIndex:[[prefs stringForKey:@"SelectDateString"] length] - 3];
+    
+    NSRange rangeY = {0, 4};
+    NSRange rangeM = {5, 2};
+    NSRange rangeD = {8, 2};
+    
+    dateString = [NSString stringWithFormat:@"%@-%@-%@", [dateString substringWithRange:rangeY], [dateString substringWithRange:rangeM],[dateString substringWithRange:rangeD]];
+    
+    NSDictionary *info = [NSDictionary dictionaryWithObjectsAndKeys:designerCode, @"designerCode", dateString, @"reserveDate", nil];
+    
+    [self performSegueWithIdentifier:@"designerSegue" sender:info];
 }
 
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
@@ -187,7 +198,12 @@
         
         DesignerScheduleTimeViewController *controller = (DesignerScheduleTimeViewController *)segue.destinationViewController;
         
+        NSDictionary *dic = (NSDictionary *)sender;
+        
+        controller.designerCode = dic[@"designerCode"];
+        controller.reserveDate = dic[@"reserveDate"];
         controller.designerCutList = [NSArray arrayWithArray:dataArray];
+
     }
 }
 

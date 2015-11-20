@@ -50,7 +50,7 @@
                 <outlet property="lbl_reserveYN" destination="cDx-H3-Y1w" id="bDh-PT-9A3"/>
                 <outlet property="lbl_time" destination="dia-qq-ZRQ" id="Vx1-Sd-gYE"/>
             </connections>
-            <point key="canvasLocation" x="237" y="281"/>
+            <point key="canvasLocation" x="151" y="250"/>
         </tableViewCell>
     </objects>
 </document>

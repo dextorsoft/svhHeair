@@ -8,12 +8,18 @@
 
 #import <UIKit/UIKit.h>
 #import "DesignerScheduleTimeViewDataSource.h"
+#import "DesignerCutListViewController.h"
+
 
 @interface DesignerScheduleTimeViewController : UIViewController<DesignerScheduleTimeViewDataSourceDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (strong, nonatomic) NSArray *designerCutList;
+
+@property (strong, nonatomic) NSString *designerCode;
+
+@property (strong, nonatomic) NSString *reserveDate;
 
 @property (strong, nonatomic) DesignerScheduleTimeViewDataSource *designerScheduleTimeViewDataSource;
 

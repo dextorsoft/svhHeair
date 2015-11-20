@@ -61,7 +61,10 @@
 - (void) tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
     if ([self.delegate respondsToSelector:@selector(TimeListSelectedIndex:)]) {
-        [self.delegate TimeListSelectedIndex:indexPath];
+        
+        NSString *timeList = [NSString stringWithFormat:@"%ld", (long)indexPath.row + 10];
+        
+        [self.delegate TimeListSelectedIndex:timeList];
     }
 }
 

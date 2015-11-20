@@ -48,10 +48,20 @@
     return YES;
 }
 
-- (void) TimeListSelectedIndex:(NSIndexPath *)indexPath {
+- (void) TimeListSelectedIndex:(NSString *)selectedTime {
     
-    [self performSegueWithIdentifier:@"cutSegue" sender:nil];
+    
+    [self performSegueWithIdentifier:@"cutSegue" sender:selectedTime];
 }
 
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"cutSegue"]) {
+        DesignerCutListViewController *controller = (DesignerCutListViewController *)segue.destinationViewController;
+        controller.designerCode = _designerCode;
+        controller.reserveDate = _reserveDate;
+        controller.reserveTime = sender;
+    }
+}
 
 @end

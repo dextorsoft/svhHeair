@@ -23,6 +23,6 @@
 
 @required
 
-- (void) TimeListSelectedIndex : (NSIndexPath *) indexPath;
+- (void) TimeListSelectedIndex : (NSString *) selectedTime;
 
 @end

@@ -8,8 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol DesignerCutListViewDataSourceDelegate;
+
 @interface DesignerCutListViewDataSource : NSObject<UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) NSArray *cutArray;
+
+@property (strong, nonatomic) id<DesignerCutListViewDataSourceDelegate> delegate;
+
+@end
+
+@protocol DesignerCutListViewDataSourceDelegate <NSObject>
+
+@required
+
+- (void) CutSelectedIndex : (NSIndexPath *) indexPath;
 
 @end
