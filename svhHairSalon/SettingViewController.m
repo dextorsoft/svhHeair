@@ -20,6 +20,7 @@
 
 @implementation SettingViewController
 
+#pragma mark - LifeCycle!!
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -58,8 +59,6 @@
 #pragma mark - 계정 삭제
 - (IBAction)dropOutAction:(UIButton*)sender {
     
-    NSLog(@"test");
-    
     NSString *title = @"계정을 삭제 하겠습니까?";
     NSString *message = @"계정을 삭제하시면 어플이 종료됩니다.";
 
@@ -71,24 +70,25 @@
     UIAlertAction *doAction = [UIAlertAction actionWithTitle:@"삭제하기" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
         NSLog(@"deleting...");
         
-        ForToolClass *forToolClass = [[ForToolClass alloc] init];
-        
-        /*****
-         아래 NSString 은 차후에 내부 DB나 환경변수에서 대입시켜야함... 잊지 않고 마무리 작업 때 바꾸자... 20151118
-         *****/
-        NSString *myCode = @"1";
-        NSString *myId = @"test";
-        
-        NSString *dropOutString = [NSString stringWithFormat:@"http://%s/m_delete.php?m_Code=%@&m_myId=%@"
-                                   ,KN_HOST_NAME
-                                   ,myCode
-                                   ,myId];
-        
-        [forToolClass GetHTMLString:dropOutString encoding:KN_SERVER_LANG];
-        
-        [self sqliteTerminated];        //sqlite 에서 정보 지우는 함수...
-        
-        exit(0);        //종료함수??
+        NSString *alTitle = @"계정삭제 알림";
+        NSString *alMessage = @"계정삭제가 진행되지 않았습니다.\n나중에 다시 시도해 주세요.";
+        if (![self ArchiveDropOut]) {   //계정삭제 실패...안내 문구 뛰워 주기
+            UIAlertController *DropOutAlert = [UIAlertController alertControllerWithTitle:alTitle
+                                                                                  message:alMessage
+                                                                           preferredStyle:UIAlertControllerStyleActionSheet];
+            UIAlertAction *exitAction = [UIAlertAction actionWithTitle:@"나중에" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
+                NSLog(@"fault");
+            }];
+            UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"재시도" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
+                [regDropOut presentViewController:DropOutAlert animated:YES completion:nil];        //retry!!!
+            }];
+            [DropOutAlert addAction:exitAction];
+            [DropOutAlert addAction:retryAction];
+            [regDropOut presentViewController:DropOutAlert animated:YES completion:nil];    //일단 테스트 오류가 나는 지 확인하기....
+        }else if ([self ArchiveDropOut]){
+            [self WebdropOut];  //웹계정 삭제
+            exit(0);        //종료함수
+        }
         
     }];
     [regDropOut addAction:cancelAction];
@@ -96,13 +96,38 @@
     
     [self presentViewController:regDropOut animated:YES completion:nil];
 }
-
--(void)sqliteTerminated{
-    /*****
-     sqlite 와 환경변수(UserDefault) 에서 삭제 하는 함수를 만들어야함...
-     *****/
+//웹에서 계정삭제 시도
+-(void)WebdropOut{
+    ForToolClass *forToolClass = [[ForToolClass alloc] init];
+    ArchivingConnect *archivingConnect = [[ArchivingConnect alloc] init];
+    [archivingConnect MyProfileFile];   //아카이브 파일 연결
+    NSString *myCode = [archivingConnect MyProfileCall:@"myCode"];
+    NSString *myID = [archivingConnect MyProfileCall:@"myID"];
+    
+    NSString *dropOutString = [NSString stringWithFormat:@"http://%s/m_delete.php?m_Code=%@&m_myId=%@"
+                               ,KN_HOST_NAME
+                               ,myCode
+                               ,myID];
+    
+    [forToolClass GetHTMLString:dropOutString encoding:KN_SERVER_LANG];
 }
-
+//아카이빙 파일이 삭제되지 않을경우와 삭제되는 경우 return BOOL
+-(BOOL)ArchiveDropOut{
+    BOOL OkDropOut;
+    ArchivingConnect *archivingConnect = [[ArchivingConnect alloc] init];
+    [archivingConnect MyProfileFile];   //아카이브 파일 연결
+    if ([archivingConnect.fileManager fileExistsAtPath:archivingConnect.dataFilePath]) {
+        if (![archivingConnect MyProfileRemove]) {
+            OkDropOut = [archivingConnect MyProfileRemove];
+        }else if ([archivingConnect MyProfileRemove]){
+            OkDropOut = [archivingConnect MyProfileRemove];
+        }
+    }
+    return OkDropOut;
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////여기까지 계정삭제 파트!!
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark - 개발자문의하기 버튼
 -(IBAction)dev_qna:(id)sender{
     NSString *title = NSLocalizedString(@"개발자에게 문의할 내용을 작성하세요", nil);

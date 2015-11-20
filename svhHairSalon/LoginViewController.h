@@ -10,7 +10,9 @@
 
 @interface LoginViewController : UIViewController{
     NSString *LoginURL;
+
 }
 
 @property (retain, nonatomic) IBOutlet UIWebView *WVLoginView;
+
 @end

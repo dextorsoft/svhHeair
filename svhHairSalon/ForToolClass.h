@@ -19,8 +19,8 @@
     
 }
 
--(NSDate *)getDateFromSting:(NSString *)string;
--(NSString *)getStringFromDate:(NSDate *)date;
+- (NSDate *)getDateFromSting:(NSString *)string;
+- (NSString *)getStringFromDate:(NSDate *)date;
 - (NSString *)GetHTMLString:(NSString *)urlStr encoding:(int)enc;
 - (void)Vibrator;
 

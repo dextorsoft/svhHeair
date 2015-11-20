@@ -20,16 +20,16 @@
     [self NavigationSetting];
     LoginURL = [NSString stringWithFormat:@"http://%s/top_bg.html",KN_HOST_NAME];
     [_WVLoginView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:LoginURL]]];
-    //////////////////나중에 삭제....20151012mon
-    [self performSegueWithIdentifier:@"MovetoLife" sender:self];//////////////////나중에 삭제....20151012mon
-    //////////////////나중에 삭제....20151012mon
-}
 
+    [self performSegueWithIdentifier:@"MovetoLife" sender:self];//////////////////나중에 삭제....20151012mon
+
+}
+///////////////////
 -(void)viewWillAppear:(BOOL)animated{
     [self NavigationSetting];
-    //////////////////나중에 삭제....20151012mon
+
     [self performSegueWithIdentifier:@"MovetoLife" sender:self];//////////////////나중에 삭제....20151012mon
-    //////////////////나중에 삭제....20151012mon
+
 }
 
 - (void)didReceiveMemoryWarning {

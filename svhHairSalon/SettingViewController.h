@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "InfoViewController.h"
 #import "ForToolClass.h"
+#import "ArchivingConnect.h"
 
 @interface SettingViewController : UITableViewController
 

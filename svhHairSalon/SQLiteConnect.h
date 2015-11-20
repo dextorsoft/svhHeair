@@ -22,6 +22,10 @@
 -(void)openDB;
 -(NSString *)filePath;
 -(void)getDB;
+
+-(void)initDB;
+-(void)openDataBase;
+-(void)closeDataBase;
 /////////////////////
 
 @end

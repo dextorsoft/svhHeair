@@ -60,6 +60,7 @@
                                                      name:UIKeyboardWillHideNotification
                                                    object:nil];
     }
+    
     return;
 }
 
@@ -160,10 +161,11 @@
 #pragma mark - IBAction Last Request Join Submit
 //
 - (IBAction)BtnUserJoinSubmit:(UIButton *)sender {
-    
+
     BOOL JoinOK = [self joinInfoChk];
     
     if (JoinOK) {
+        
         NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
         JoinDevice = [prefs stringForKey:@"m_Device"];
         [prefs synchronize];
@@ -175,53 +177,93 @@
             
         }];
         
+        //회원가입 최종 결정 버튼
         UIAlertAction *correctAlertAction = [UIAlertAction actionWithTitle:@"Join" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-            NSLog(@"JoinNum == %@",JoinNum);
-            NSLog(@"JoinName == %@",JoinName);
-            NSLog(@"JoinNickName == %@",JoinNickName);
-            NSLog(@"JoinID == %@",JoinID);
-            NSLog(@"JoinPass == %@",JoinPass);
-            NSLog(@"JoinPassChk == %@",JoinPassChk);
-            NSLog(@"JoinBirthDate == %@", SimpleBirthDate);
-            NSLog(@"JoinGender == %@",JoinGender);
-            NSLog(@"JoinDevice == %@", JoinDevice);
-            if (JoinIntroducerID.length == 0 || JoinIntroducerID == nil) {
-                //[self TextLengthWarning:@"추천인 아이디가 없습니다"];
-                JoinIntroducerID = @"";
-            }
-            NSString *JoinHtml = [NSString stringWithFormat:@"http://%s/m_join.php?m_Name=%@&m_PH=%@&m_Device=%@&m_Section=1&m_ID=%@&m_PW=%@&m_NID=%@&m_NICK=%@&m_Date=%@&m_sex=%@",
-                                  KN_HOST_NAME,
-                                  JoinName,
-                                  JoinNum,
-                                  JoinDevice,
-                                  JoinID,
-                                  JoinPass,
-                                  JoinIntroducerID,
-                                  JoinNickName,
-                                  SimpleBirthDate,
-                                  JoinGender];
-            NSLog(@"JoinHtml == %@", JoinHtml);
-            
-            NSString *MyCode = [forToolClass GetHTMLString:JoinHtml encoding:KN_SERVER_LANG];
-            NSLog(@"MyCode == %@", MyCode);
-            if ([MyCode isEqualToString:@""] || MyCode == nil || MyCode.length == 0 || [MyCode isEqualToString:@"error"]) {
-                [self TextLengthWarning:@"통신상태가 좋지 않습니다\n확인 후 다시 시도 하세요"];
-                [self performSegueWithIdentifier:@"SignBack" sender:self];
-            }else{
-                [self performSegueWithIdentifier:@"SignUp" sender:self];
-            }
+            [self saveRegInfo];     //회원가입 업로드 및 아카이브 저장 메소드
         }];
         
         [alertController addAction:cancelAlertAction];
         [alertController addAction:correctAlertAction];
         
         [self presentViewController:alertController animated:YES completion:nil];
-
+        
     }else{
         
     }
-    
 }
+
+//회원가입 업로드 및 아카이브 저장 메소드
+-(void)saveRegInfo{
+    
+    NSLog(@"JoinNum == %@",JoinNum);
+    NSLog(@"JoinName == %@",JoinName);
+    NSLog(@"JoinNickName == %@",JoinNickName);
+    NSLog(@"JoinID == %@",JoinID);
+    NSLog(@"JoinPass == %@",JoinPass);
+    NSLog(@"JoinPassChk == %@",JoinPassChk);
+    NSLog(@"JoinBirthDate == %@", SimpleBirthDate);
+    NSLog(@"JoinGender == %@",JoinGender);
+    NSLog(@"JoinDevice == %@", JoinDevice);
+    if (JoinIntroducerID.length == 0 || JoinIntroducerID == nil) {
+        //[self TextLengthWarning:@"추천인 아이디가 없습니다"];
+        JoinIntroducerID = @"";
+    }
+    NSString *JoinURL = [NSString stringWithFormat:@"http://%s/m_join.php?m_Name=%@&m_PH=%@&m_Device=%@&m_Section=1&m_ID=%@&m_PW=%@&m_NID=%@&m_NICK=%@&m_Date=%@&m_sex=%@",
+                         KN_HOST_NAME,
+                         JoinName,
+                         JoinNum,
+                         JoinDevice,
+                         JoinID,
+                         JoinPass,
+                         JoinIntroducerID,
+                         JoinNickName,
+                         SimpleBirthDate,
+                         JoinGender];
+    NSLog(@"JoinHtml == %@", JoinURL);
+    
+    NSString *MyCode = [forToolClass GetHTMLString:JoinURL encoding:KN_SERVER_LANG];
+    NSLog(@"MyCode == %@", MyCode);
+    if ([MyCode isEqualToString:@""] || MyCode == nil || MyCode.length == 0 || [MyCode isEqualToString:@"error"]) {
+        [self TextLengthWarning:@"통신상태가 좋지 않습니다\n확인 후 다시 시도 하세요"];
+        [self performSegueWithIdentifier:@"SignBack" sender:self];
+    }else{
+        
+        //Token Upload in the Server
+        NSString *tokenURL = [NSString stringWithFormat:@"http://%s/m_c2dm.php?sid=%@&svalue=%@&type=1",KN_HOST_NAME ,MyCode ,[JoinDevice stringByAddingPercentEscapesUsingEncoding:KN_SERVER_LANG]];
+        NSString *tokenChk = [forToolClass GetHTMLString:tokenURL encoding:KN_SERVER_LANG];
+        tokenChk = [tokenChk stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        //가입정보 Server 에서 확인
+        NSString *regChkURL = [NSString stringWithFormat:@"http://%s/m_setup_check.php?m_Code=%@", KN_HOST_NAME, MyCode];
+        regChkURL = [regChkURL stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+        NSString *regChkData = [forToolClass GetHTMLString:regChkURL encoding:KN_SERVER_LANG];
+        
+        NSArray *regInfo = [regChkData componentsSeparatedByString:@"|"];
+        
+        //아카이브 호출
+        ArchivingConnect *archive = [[ArchivingConnect alloc] init];
+        [archive MyProfileFile];
+        [archive MyProfileWrite:MyCode name:JoinName PH:JoinNum Department:[regInfo objectAtIndex:4] Grade:[regInfo objectAtIndex:24] UserLevel:[regInfo objectAtIndex:2] Gender:JoinGender Bdate:SimpleBirthDate ID:JoinID Pass:JoinPass Boss:@"0" Best:@"0" Nick:JoinNickName Item:@"0" PN:[regInfo objectAtIndex:33]];
+        
+        if (![archive.fileManager fileExistsAtPath:archive.dataFilePath]) {
+            NSString *title = @"내부파일 작성이 되지 않았습니다.";
+            UIAlertController *archiveFail = [UIAlertController alertControllerWithTitle:title
+                                                                                 message:nil
+                                                                          preferredStyle:UIAlertControllerStyleActionSheet];
+            UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"재시도"
+                                                                  style:UIAlertActionStyleDefault
+                                                                handler:^(UIAlertAction *noAction){
+                
+            }];
+            [archiveFail addAction:retryAction];
+            [archiveFail presentViewController:archiveFail animated:YES completion:nil];
+        }else if([archive.fileManager fileExistsAtPath:archive.dataFilePath]){
+            
+            [self performSegueWithIdentifier:@"SignUp" sender:self];        //로그인 화면으로 segue 타기
+        }
+    }
+}
+
 ////////////////////
 //회원가입 체크 버튼 메소드
 -(BOOL)joinInfoChk{

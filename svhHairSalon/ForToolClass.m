@@ -88,6 +88,7 @@ int kn_connecterror;
     NSHTTPURLResponse *response = nil;//NULL;
     NSData *responseData = [NSURLConnection sendSynchronousRequest:loginRequest returningResponse:&response error:&error];
     NSString *strHtml = [[NSString alloc] initWithData:responseData encoding:enc];
+    NSLog(@"strHtml == %@", strHtml);
     if (!error) kn_connecterror=0;
     else kn_connecterror=1;
     NSLog(@"error=%d",errno);

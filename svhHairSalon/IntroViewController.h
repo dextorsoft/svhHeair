@@ -7,9 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
 #import "ForToolClass.h"
 #import "StatusHideViewController.h"
-#import "SQLiteConnect.h"
+#import "ArchivingConnect.h"
 
 @interface IntroViewController : StatusHideViewController {
 

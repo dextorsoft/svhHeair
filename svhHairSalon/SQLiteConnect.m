@@ -11,7 +11,7 @@
 @implementation SQLiteConnect
 
 ///////////////////////////
-
+/*
 -(void)checkAndCopyDB{
     NSFileManager *fileM = [NSFileManager defaultManager];
     if ([fileM fileExistsAtPath:[self filePath]]) return;
@@ -57,7 +57,40 @@
     }
     sqlite3_finalize(statement);
 }
-
+*/
 ///////////////////////////
+
+-(void)initDB{
+    //First
+    BOOL success;
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    NSError *error;
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString *writableDBPath = [documentsDirectory stringByAppendingPathComponent:@"svhHair_BU.sqlite"];
+    success = [fileManager fileExistsAtPath:writableDBPath];
+    if(success) return;
+    //the writable database does not exist, so copy the default to the appropriate location.
+    NSString *defaultDBPath = [[[NSBundle mainBundle] resourcePath] stringByAppendingPathComponent:@"svhHair_Bu.sqlite"];
+    success = [fileManager copyItemAtPath:defaultDBPath toPath:writableDBPath error:&error];
+    if (!success) {
+        //
+    }
+}
+
+-(void)openDataBase{
+    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
+    NSString *filePath = [documentsDirectory stringByAppendingPathComponent:@"svhHair_Bu.sqlite"];
+    
+    if(sqlite3_open([filePath UTF8String], &db) != SQLITE_OK){
+        sqlite3_close(db);
+        return;
+    }
+}
+
+-(void)closeDataBase{
+    sqlite3_close(db);
+    return;
+}
 
 @end
