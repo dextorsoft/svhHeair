@@ -82,7 +82,6 @@
     
     switch (buttonIndex) {
         case 0:
-            
             // 예약
             // 프로토콜 호출
             
@@ -102,5 +101,14 @@
 - (IBAction)ac_btn_closeModal:(id)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
+
+#pragma 예약하기
+- (void) reserveCut {
+    
+//    NSString *url = [NSString stringWithFormat:@"http://%s/month_upload.php?month=%@&type=%@&code=%@&name=%@&userc=%@&usern=%@&menu=%@&comment=%@", KN_HOST_NAME, ];
+//    NSString *tableData = [_forTooClass GetHTMLString:url encoding:KN_SERVER_LANG];
+//    tableData = [tableData stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+}
+
 
 @end
