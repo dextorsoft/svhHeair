@@ -12,6 +12,7 @@
 
 //아카이브 파일 경로 설정
 -(void)MyProfileFile{
+    NSLog(@"MyProfileFile");
     NSString *docsDir;
     NSArray *dirPaths;
     dirPaths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -22,6 +23,7 @@
 //아카이브 파일 설계부터 하자
 //아카이브 파일에 저장하기
 -(void)MyProfileWrite:(NSString *)MyCode name:(NSString *)MyName PH:(NSString *)myPH Department:(NSString *)myDepartment Grade:(NSString *)myGrade UserLevel:(NSString *)myUserLevel Gender:(NSString *)myGender Bdate:(NSString *)myBdate ID:(NSString *)myID Pass:(NSString *)myPass Boss:(NSString *)myBoss Best:(NSString *)myBest Nick:(NSString *)myNick Item:(NSString *)myItem PN:(NSString *)myPN{
+    NSLog(@"MyProfileWrite");
     NSMutableDictionary *dataDictionary;
     
     dataDictionary = [[NSMutableDictionary alloc] initWithObjectsAndKeys:
@@ -46,6 +48,7 @@
 
 //아카이브 텍스트 호출하기
 -(NSString *)MyProfileCall:(NSString *)callForKey{
+    NSLog(@"MyProfileCall");
     NSString *archiveCall;
     _fileManager = [NSFileManager defaultManager];
     if ([_fileManager fileExistsAtPath:_dataFilePath]) {
@@ -58,13 +61,20 @@
 
 //아카이브 파일 삭제하기 myProfile.archive
 -(BOOL)MyProfileRemove{
+    NSLog(@"MyProfileRemove");
     _fileManager = [NSFileManager defaultManager];
-    [_fileManager removeItemAtPath:_dataFilePath error:nil];
+    if ([_fileManager removeItemAtPath:_dataFilePath error:NULL] == NO) {
+        NSLog(@"file remove failed...");
+    }
+    return YES;     //나중 수정
+    
+    /*
     if ([_fileManager fileExistsAtPath:_dataFilePath]) {
         return NO;
     }else{
         return YES;
     }
+    */
 }
 
 @end

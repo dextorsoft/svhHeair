@@ -8,7 +8,7 @@
 
 #import "ScheduleDetailViewController.h"
 
-@interface ScheduleDetailViewController (){
+@interface ScheduleDetailViewController () {
 
 }
 
@@ -24,6 +24,7 @@
 //    self.tabBarController.tabBar.translucent = NO;
     
     _forTooClass = [[ForToolClass alloc] init];
+    
     [self TitleSubSet];
     
     // 테이블뷰
@@ -67,6 +68,7 @@
 
 #pragma 디자인 스케쥴 리스트 테이블 바인딩
 - (void) bindDesignSchedule {
+    NSLog(@"bindDesignSchedule");
     
     _scheduleDetailTableViewDataSource = [[ScheduleDetailTableViewDataSource alloc] init];
     _scheduleDetailTableViewDataSource.delegate = self;
@@ -80,6 +82,7 @@
 
 #pragma 디자이너 리스트 데이터
 - (NSArray *) bindDesignerList {
+    NSLog(@"bindDesignerList");
     
     NSString *url = [NSString stringWithFormat:@"http://%s/m_list.php?m_Mode=4", KN_HOST_NAME];
     NSString *tableData = [_forTooClass GetHTMLString:url encoding:KN_SERVER_LANG];
@@ -114,6 +117,7 @@
 
 #pragma 디자이너 휴무일 / 예약시간 데이터
 - (NSArray *) bindDesignerDate {
+    NSLog(@"bindDesignerList");
     
     NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
     
@@ -161,12 +165,14 @@
 
 #pragma 선택된 디자이너
 - (void) DesignerListSelectedIndex:(NSString *)designerCode{
+    NSLog(@"DesignerListSelectedIndex");
     
-    [self performSegueWithIdentifier:@"designerSegue" sender:designerCode];
+    [self performSegueWithIdentifier:@"designerSegue" sender:designerCode];     //segue Identifier  에서 에러 발생... 20151123
+
 }
 
-- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    
+- (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {         //이걸 안탐...  20151123
+    NSLog(@"prepareForSegue");
     // 디자이너 선택시
     if ([segue.identifier isEqualToString:@"designerSegue"]) {
         

@@ -19,13 +19,11 @@
 #define kOFFSET_FOR_KEYBOARD 215.0
 
 
-#pragma mark - View Read Part
+#pragma mark - LifeCycle Part
 
 - (void)viewDidLoad {
-    ///////////////
     forToolClass = [[ForToolClass alloc] init];
-    ///////////////
-    NSLog(@"check");
+
     setMoveChk = YES;
     [super viewDidLoad];
     // Do any additional setup after loading the view.
@@ -46,7 +44,6 @@
     [self.TFUserPassChk addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];      //비밀번호 확인 TextField 감시;
     _TFUserIntroducerID.delegate = self;
     [self.TFUserIntroducerID addTarget:self action:@selector(textFieldChanged:) forControlEvents:UIControlEventEditingChanged];      //추천인 아이디 TextField 감시;
-    //
     
     //Keyboard setting
     if (self) {
@@ -65,9 +62,7 @@
 }
 
 -(void)viewWillAppear:(BOOL)animated{
-    ///////////////
     forToolClass = [[ForToolClass alloc] init];
-    ///////////////
 }
 
 - (void)didReceiveMemoryWarning {
@@ -498,7 +493,7 @@
 -(void)setViewMoveUP:(BOOL)movedUp{
     
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDuration:0.1];
     
     CGRect rect = _joinMainView.frame;
     

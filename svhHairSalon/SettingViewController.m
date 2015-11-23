@@ -72,20 +72,21 @@
         
         NSString *alTitle = @"계정삭제 알림";
         NSString *alMessage = @"계정삭제가 진행되지 않았습니다.\n나중에 다시 시도해 주세요.";
-        if (![self ArchiveDropOut]) {   //계정삭제 실패...안내 문구 뛰워 주기
+        BOOL ArchiveChk = [self ArchiveDropOut];
+        if (!ArchiveChk) {   //계정삭제 실패...안내 문구 뛰워 주기
             UIAlertController *DropOutAlert = [UIAlertController alertControllerWithTitle:alTitle
                                                                                   message:alMessage
                                                                            preferredStyle:UIAlertControllerStyleActionSheet];
             UIAlertAction *exitAction = [UIAlertAction actionWithTitle:@"나중에" style:UIAlertActionStyleCancel handler:^(UIAlertAction *action){
-                NSLog(@"fault");
+                NSLog(@"waiting...");
             }];
             UIAlertAction *retryAction = [UIAlertAction actionWithTitle:@"재시도" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action){
-                [regDropOut presentViewController:DropOutAlert animated:YES completion:nil];        //retry!!!
+                [self presentViewController:DropOutAlert animated:YES completion:nil];        //retry!!!
             }];
             [DropOutAlert addAction:exitAction];
             [DropOutAlert addAction:retryAction];
-            [regDropOut presentViewController:DropOutAlert animated:YES completion:nil];    //일단 테스트 오류가 나는 지 확인하기....
-        }else if ([self ArchiveDropOut]){
+            [self presentViewController:DropOutAlert animated:YES completion:nil];
+        }else if (ArchiveChk){
             [self WebdropOut];  //웹계정 삭제
             exit(0);        //종료함수
         }
@@ -113,16 +114,10 @@
 }
 //아카이빙 파일이 삭제되지 않을경우와 삭제되는 경우 return BOOL
 -(BOOL)ArchiveDropOut{
-    BOOL OkDropOut;
+    NSLog(@"archiveDeleting...");
     ArchivingConnect *archivingConnect = [[ArchivingConnect alloc] init];
     [archivingConnect MyProfileFile];   //아카이브 파일 연결
-    if ([archivingConnect.fileManager fileExistsAtPath:archivingConnect.dataFilePath]) {
-        if (![archivingConnect MyProfileRemove]) {
-            OkDropOut = [archivingConnect MyProfileRemove];
-        }else if ([archivingConnect MyProfileRemove]){
-            OkDropOut = [archivingConnect MyProfileRemove];
-        }
-    }
+    BOOL OkDropOut = [archivingConnect MyProfileRemove];
     return OkDropOut;
 }
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

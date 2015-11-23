@@ -4,7 +4,8 @@
 //
 //  Created by OGGU on 2015. 11. 19..
 //  Copyright © 2015년 kr.co.knsoft.svhHair. All rights reserved.
-//
+////////////////////////////////////////////////////////////////////////////////
+//  디자이너 타임 테이블
 
 #import "DesignerScheduleTimeViewController.h"
 
