@@ -3,7 +3,7 @@
 //  Stack
 //
 //  Created by Tomoya_Hirano on 5/7/15.
-//  Copyright (c) 2015 Tomoya_Hirano. All rights reserved.
+//  Copyright (c) 2015 JuHyun Ji. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>

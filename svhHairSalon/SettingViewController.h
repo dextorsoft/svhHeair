@@ -9,9 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "InfoViewController.h"
 #import "ForToolClass.h"
+#import "ArchivingConnect.h"
 
 @interface SettingViewController : UITableViewController
 
--(IBAction)dev_qna:(id)sender;
+- (IBAction)dropOutAction:(UIButton *)sender;       //계정 삭제
+
+-(IBAction)dev_qna:(id)sender;      //개발자 문의하기
 
 @end

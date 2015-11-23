@@ -31,6 +31,7 @@
 		43E1F4D81BFB1AEE004617A6 /* icon_main.png in Resources */ = {isa = PBXBuildFile; fileRef = 43E1F4D31BFB1AEE004617A6 /* icon_main.png */; };
 		43E1F4D91BFB1AEE004617A6 /* icon_point.png in Resources */ = {isa = PBXBuildFile; fileRef = 43E1F4D41BFB1AEE004617A6 /* icon_point.png */; };
 		43EC84331BF9D1F100F85B67 /* set_user.png in Resources */ = {isa = PBXBuildFile; fileRef = 43EC84321BF9D1F100F85B67 /* set_user.png */; };
+		43F171451BFEB6C600A1E1EF /* ArchivingConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = 43F171441BFEB6C600A1E1EF /* ArchivingConnect.m */; };
 		A51133E41BE8CF7700FF7087 /* SQLiteConnect.m in Sources */ = {isa = PBXBuildFile; fileRef = A51133E31BE8CF7700FF7087 /* SQLiteConnect.m */; };
 		A520908D1BC5F1D900ADB005 /* svhHair_업데이트 기록.txt in Resources */ = {isa = PBXBuildFile; fileRef = A520908C1BC5F1D900ADB005 /* svhHair_업데이트 기록.txt */; };
 		A529ADB41BD084EC00D22197 /* HairCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A529ADB31BD084EC00D22197 /* HairCollectionViewController.m */; };
@@ -161,6 +162,8 @@
 		43E1F4D31BFB1AEE004617A6 /* icon_main.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_main.png; sourceTree = "<group>"; };
 		43E1F4D41BFB1AEE004617A6 /* icon_point.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_point.png; sourceTree = "<group>"; };
 		43EC84321BF9D1F100F85B67 /* set_user.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = set_user.png; sourceTree = "<group>"; };
+		43F171431BFEB6C600A1E1EF /* ArchivingConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArchivingConnect.h; sourceTree = "<group>"; };
+		43F171441BFEB6C600A1E1EF /* ArchivingConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArchivingConnect.m; sourceTree = "<group>"; };
 		A51133E21BE8CF7700FF7087 /* SQLiteConnect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SQLiteConnect.h; sourceTree = "<group>"; };
 		A51133E31BE8CF7700FF7087 /* SQLiteConnect.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SQLiteConnect.m; sourceTree = "<group>"; };
 		A520908C1BC5F1D900ADB005 /* svhHair_업데이트 기록.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "svhHair_업데이트 기록.txt"; sourceTree = "<group>"; };
@@ -565,6 +568,8 @@
 			children = (
 				A51133E21BE8CF7700FF7087 /* SQLiteConnect.h */,
 				A51133E31BE8CF7700FF7087 /* SQLiteConnect.m */,
+				43F171431BFEB6C600A1E1EF /* ArchivingConnect.h */,
+				43F171441BFEB6C600A1E1EF /* ArchivingConnect.m */,
 			);
 			name = SqliteConnection;
 			sourceTree = "<group>";
@@ -875,6 +880,7 @@
 				A5C1760B1BBCFEF600DF234E /* IntroViewController.m in Sources */,
 				A5C175B91BBCC1FC00DF234E /* AppDelegate.m in Sources */,
 				43E1F4CF1BFB13DC004617A6 /* PointViewController.m in Sources */,
+				43F171451BFEB6C600A1E1EF /* ArchivingConnect.m in Sources */,
 				A58CA37D1BCBA3F2009BC054 /* CEExplodeAnimationController.m in Sources */,
 				A5C175B61BBCC1FC00DF234E /* main.m in Sources */,
 				A58CA37E1BCBA3F2009BC054 /* CEFlipAnimationController.m in Sources */,
@@ -981,7 +987,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "8227f89c-2488-481a-a310-160b477f938e";
+				PROVISIONING_PROFILE = "257bd684-8da9-4531-869f-c2c7aafdf24b";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1020,7 +1026,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "8227f89c-2488-481a-a310-160b477f938e";
+				PROVISIONING_PROFILE = "257bd684-8da9-4531-869f-c2c7aafdf24b";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

@@ -7,7 +7,14 @@
 //
 
 #import "ViewController.h"
+#import "ForToolClass.h"
+#import "UIImageView+AsyncAndCache.h"
 
-@interface PointViewController : ViewController
+@interface PointViewController : ViewController{
+    
+    
+    
+}
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end

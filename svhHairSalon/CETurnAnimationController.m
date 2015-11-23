@@ -47,13 +47,13 @@
                                  options:0
                               animations:^{
                                   [UIView addKeyframeWithRelativeStartTime:0.0
-                                                          relativeDuration:0.5
+                                                          relativeDuration:0.2
                                                                 animations:^{
                                                                     // rotate the from view
                                                                     fromView.layer.transform = [self rotate:factor * M_PI_2];
                                                                 }];
-                                  [UIView addKeyframeWithRelativeStartTime:0.5
-                                                          relativeDuration:0.5
+                                  [UIView addKeyframeWithRelativeStartTime:0.2
+                                                          relativeDuration:0.2
                                                                 animations:^{
                                                                     // rotate the to view
                                                                     toView.layer.transform =  [self rotate:0.0];

@@ -59,7 +59,12 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface. --> 앱이 실행되거나 홈버튼으로 갔다가 다시 올때마다 실행이 되는 파트!
+    
+    NSUserDefaults *prefs = [NSUserDefaults standardUserDefaults];
+    
+    [prefs synchronize];
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
@@ -301,4 +306,5 @@
     }
     */
 }
+
 @end

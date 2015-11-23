@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 #import "ForToolClass.h"
+#import "ArchivingConnect.h"
 
 @interface JoinViewController : UIViewController<UITextFieldDelegate>{
+    
+    ForToolClass *forToolClass;     //참조 클래스
     
     int setMoveCnt;     //softKeyboard animation cnt;
     
@@ -21,16 +24,11 @@
     
     UIDatePicker *datePicker;
     
-    ////////////
     BOOL BtnUserNickChkBool;    //별명 중복확인 버튼 bool
     BOOL BtnUserIDChkBool;      //아이디 중복확인 버튼 bool
     BOOL BtnUserIntroducerIDChkBool;    //추천인 ID 존재여부 확인 버튼 bool
-    ////////////
     
-    ////////////
-    int kn_connecterror;
-    ////////////
-    ForToolClass *forToolClass;
+    NSString *dataFilePath;     //아카이브 데이터 경로 변수
 }
 
 @property (retain, nonatomic) IBOutlet UIView *joinMainView;
