@@ -58,9 +58,10 @@
     
     if ([segue.identifier isEqualToString:@"cutSegue"]) {
         DesignerCutListViewController *controller = (DesignerCutListViewController *)segue.destinationViewController;
-        controller.designerCode = _designerCode;
-        controller.reserveDate = _reserveDate;
-        controller.reserveTime = sender;
+//        controller.designerCode = _designerCode;
+//        controller.reserveDate = _reserveDate;
+//        controller.designerName = _designerName;
+//        controller.reserveTime = sender;
     }
 }
 

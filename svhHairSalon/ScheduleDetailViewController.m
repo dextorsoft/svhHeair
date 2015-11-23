@@ -199,11 +199,10 @@
         DesignerScheduleTimeViewController *controller = (DesignerScheduleTimeViewController *)segue.destinationViewController;
         
         NSDictionary *dic = (NSDictionary *)sender;
-        
         controller.designerCode = dic[@"designerCode"];
+        controller.designerName = dic[@"designerName"];
         controller.reserveDate = dic[@"reserveDate"];
         controller.designerCutList = [NSArray arrayWithArray:dataArray];
-
     }
 }
 

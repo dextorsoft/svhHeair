@@ -105,9 +105,11 @@
 #pragma 예약하기
 - (void) reserveCut {
     
-//    NSString *url = [NSString stringWithFormat:@"http://%s/month_upload.php?month=%@&type=%@&code=%@&name=%@&userc=%@&usern=%@&menu=%@&comment=%@", KN_HOST_NAME, ];
-//    NSString *tableData = [_forTooClass GetHTMLString:url encoding:KN_SERVER_LANG];
-//    tableData = [tableData stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
+    
+    
+    NSString *url = [NSString stringWithFormat:@"http://%s/month_upload.php?month=%@&type=%@&code=%@&name=%@&userc=%@&usern=%@&menu=%@&comment=%@", KN_HOST_NAME, _reserveDate, @"0", @"121", @"김경록", _designerCode, _designerName, @"헤어메뉴", @"코멘트내용"];
+    NSString *tableData = [_forTooClass GetHTMLString:url encoding:KN_SERVER_LANG];
+    tableData = [tableData stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
 
 

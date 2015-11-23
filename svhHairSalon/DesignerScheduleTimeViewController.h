@@ -19,6 +19,8 @@
 
 @property (strong, nonatomic) NSString *designerCode;
 
+@property (strong, nonatomic) NSString *designerName;
+
 @property (strong, nonatomic) NSString *reserveDate;
 
 @property (strong, nonatomic) DesignerScheduleTimeViewDataSource *designerScheduleTimeViewDataSource;
