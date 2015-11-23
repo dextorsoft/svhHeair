@@ -58,11 +58,13 @@
 - (void) prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     if ([segue.identifier isEqualToString:@"cutSegue"]) {
-        DesignerCutListViewController *controller = (DesignerCutListViewController *)segue.destinationViewController;
-//        controller.designerCode = _designerCode;
-//        controller.reserveDate = _reserveDate;
-//        controller.designerName = _designerName;
-//        controller.reserveTime = sender;
+        
+        UINavigationController *navController = (UINavigationController *)segue.destinationViewController;
+        DesignerCutListViewController *controller = (DesignerCutListViewController *)navController.viewControllers[0];
+        controller.designerCode = _designerCode;
+        controller.reserveDate = _reserveDate;
+        controller.designerName = _designerName;
+        controller.reserveTime = sender;
     }
 }
 

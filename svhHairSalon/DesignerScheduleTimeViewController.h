@@ -23,6 +23,7 @@
 
 @property (strong, nonatomic) NSString *reserveDate;
 
+
 @property (strong, nonatomic) DesignerScheduleTimeViewDataSource *designerScheduleTimeViewDataSource;
 
 @end

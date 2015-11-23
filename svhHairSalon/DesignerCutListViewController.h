@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ForToolClass.h"
 #import "DesignerCutListViewDataSource.h"
-
+#import "ArchivingConnect.h"
 
 
 @interface DesignerCutListViewController : UIViewController<DesignerCutListViewDataSourceDelegate, UIAlertViewDelegate>
@@ -22,6 +22,8 @@
 
 @property (strong, nonatomic) DesignerCutListViewDataSource *designerCutListViewDataSource;
 
+@property (strong, nonatomic) NSArray *cutList;
+
 @property (strong, nonatomic) NSString *designerCode;
 
 @property (strong, nonatomic) NSString *designerName;
@@ -29,5 +31,9 @@
 @property (strong, nonatomic) NSString *reserveDate;
 
 @property (strong, nonatomic) NSString *reserveTime;
+
+@property (strong, nonatomic) NSIndexPath *selectedIndexPath;
+
+@property (strong, nonatomic) ArchivingConnect *archivingConnect;
 
 @end

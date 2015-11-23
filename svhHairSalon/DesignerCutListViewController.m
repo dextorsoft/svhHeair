@@ -27,14 +27,20 @@
     }
     
     _forTooClass = [[ForToolClass alloc] init];
+    _cutList = [self bindCutList];
+    
     _designerCutListViewDataSource = [[DesignerCutListViewDataSource alloc] init];
     _designerCutListViewDataSource.delegate = self;
-    _designerCutListViewDataSource.cutArray = [NSArray arrayWithArray:[self bindCutList]];
+    _designerCutListViewDataSource.cutArray = [NSArray arrayWithArray:_cutList];
     _tableView.dataSource = _designerCutListViewDataSource;
     _tableView.delegate = _designerCutListViewDataSource;
     [_tableView reloadData];
     
     self.navigationItem.title = @"스타일 선택";
+    
+    _archivingConnect = [[ArchivingConnect alloc] init];
+    [_archivingConnect MyProfileFile];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -63,6 +69,7 @@
         
         NSMutableDictionary *dic = [[NSMutableDictionary alloc] init];
         [dic setValue:[tableObject objectAtIndex:3] forKey:@"cutKind"];
+        [dic setValue:[tableObject objectAtIndex:0] forKey:@"cutCode"];
         
         [cutArray addObject:dic];
     }
@@ -71,6 +78,8 @@
 }
 
 - (void) CutSelectedIndex:(NSIndexPath *)indexPath {
+    
+    _selectedIndexPath = indexPath;
     UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:nil message:@"몇월 몇시 예약등록" delegate:self cancelButtonTitle:nil otherButtonTitles:@"예약", @"취소", nil];
     alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
     UITextField *textField = [alertView textFieldAtIndex:0];
@@ -84,7 +93,7 @@
         case 0:
             // 예약
             // 프로토콜 호출
-            
+            [self reserveCut:_selectedIndexPath alertView:alertView];
             break;
         
         case 1:
@@ -103,11 +112,16 @@
 }
 
 #pragma 예약하기
-- (void) reserveCut {
+- (void) reserveCut : (NSIndexPath *) indexPath alertView : (UIAlertView *) alertView{
     
+    NSString *textFieldContent = [[alertView textFieldAtIndex:0].text isEqualToString:@""] ? @"" : [alertView textFieldAtIndex:0].text;
+    NSDictionary *dic = _cutList[indexPath.row];
+    NSString *cutCode = dic[@"cutCode"];
+    NSString *userCode = [_archivingConnect MyProfileCall:@"myCode"];
+    NSString *userName = [_archivingConnect MyProfileCall:@"myName"];
     
+    NSString *url = [NSString stringWithFormat:@"http://%s/month_upload.php?month=%@&type=%@&code=%@&name=%@&userc=%@&usern=%@&menu=%@&comment=%@", KN_HOST_NAME, _reserveDate, @"0", userCode, userName, _designerCode, _designerName, cutCode, textFieldContent];
     
-    NSString *url = [NSString stringWithFormat:@"http://%s/month_upload.php?month=%@&type=%@&code=%@&name=%@&userc=%@&usern=%@&menu=%@&comment=%@", KN_HOST_NAME, _reserveDate, @"0", @"121", @"김경록", _designerCode, _designerName, @"헤어메뉴", @"코멘트내용"];
     NSString *tableData = [_forTooClass GetHTMLString:url encoding:KN_SERVER_LANG];
     tableData = [tableData stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
 }
